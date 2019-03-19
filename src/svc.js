@@ -19,7 +19,10 @@ function initService () {
       name: 'AS_BACKGROUND',
       value: '1'
     }],
-    script: __filename
+    script: __filename,
+    wait: 2,
+    grow: 0.5,
+    maxRetries: 3
   })
 }
 
@@ -33,11 +36,10 @@ function checkRoot () {
 export function install () {
   checkRoot()
   const svc = initService()
-  console.log('installing Hello World')
   svc.install(() => {
-    console.log('installed')
+    console.log('service installed')
     svc.start(() => {
-      console.log('started')
+      console.log('service started')
     })
   })
 }
@@ -45,5 +47,30 @@ export function install () {
 export function uninstall () {
   checkRoot()
   const svc = initService()
-  svc.uninstall()
+  svc.uninstall(() => {
+    console.log('service uninstalled')
+  })
+}
+
+export function start () {
+  checkRoot()
+  const svc = initService()
+  svc.start(() => {
+    console.log('service start')
+  })
+}
+export function stop () {
+  checkRoot()
+  const svc = initService()
+  svc.stop(() => {
+    console.log('service stopped')
+  })
+}
+
+export function restart () {
+  checkRoot()
+  const svc = initService()
+  svc.restart(() => {
+    console.log('service restarted')
+  })
 }
