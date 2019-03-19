@@ -1,5 +1,6 @@
 import program from 'commander'
 import stringArgv from 'string-argv'
+import { start, stop, status, log } from './svc'
 
 function setupCli () {
   var argv = process.argv
@@ -16,6 +17,23 @@ function setupCli () {
 
   program
     .version('0.0.1', '-v, --version')
+
+  program
+    .command('start')
+    .action(start)
+
+  program
+    .command('stop')
+    .action(stop)
+
+  program
+    .command('status')
+    .action(status)
+
+  program
+    .command('log')
+    .action(log)
+
   program
     .command('*')
     .action(() => { program.help() })
