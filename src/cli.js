@@ -1,5 +1,6 @@
 import program from 'commander'
 import stringArgv from 'string-argv'
+import { install, uninstall } from './svc'
 
 function setupCli () {
   var argv = process.argv
@@ -16,6 +17,15 @@ function setupCli () {
 
   program
     .version('0.0.1', '-v, --version')
+
+  program
+    .command('install')
+    .action(install)
+
+  program
+    .command('uninstall')
+    .action(uninstall)
+
   program
     .command('*')
     .action(() => { program.help() })

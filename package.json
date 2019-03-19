@@ -37,6 +37,8 @@
     "commander": "^2.19.0",
     "convict": "^4.4.1",
     "inquirer": "^6.2.2",
+    "is-root": "^2.0.0",
+    "node-mac": "^0.1.8",
     "string-argv": "^0.1.1"
   }
 }
